@@ -1,0 +1,14 @@
+header {
+  background: url(https://cdn-images.welcometothejungle.com/1hw3AIeaOzS_xueitADSAOXROowSS0MH_ezjJRO7cJM/rs:auto:980::/q:85/czM6Ly93dHRqLXByb2R1Y3Rpb24vdXBsb2Fkcy9hcnRpY2xlL2ltYWdlLzE0NTUvMTU4NDYxL2xpc3RhLXRhcmVhcy5qcGc);
+  background-size: cover;
+  background-position: center;
+}
+
+.TextHeader{
+  text-align: left;
+  text-shadow: 2cm;
+  font-family: fantasy;
+  margin-top: -1em;
+  margin-left: -2em;
+  color: white;
+}

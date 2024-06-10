@@ -1,0 +1,120 @@
+<div class="contact__wrapper shadow-lg mt-n9">
+
+
+  <div class="top-content">
+    <form id="contactus" (ngSubmit)="submitForm()">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 text">
+          <h3><strong>Registro de Actividades</strong></h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 mb-3">
+          <div class="form-group">
+            <label class="required-field" for="Titulo">Titulo</label>
+            <input type="text" class="form-control" id="Titulo" name="Titulo" placeholder="Titulo">
+          </div>
+        </div>
+
+        <div class="col-sm-6 mb-3">
+          <div class="form-group">
+            <label for="HorasTrabajadas">Horas Trabajadas</label>
+            <input type="number" class="form-control" id="HorasTrabajadas" name="HorasTrabajadas"
+              placeholder="Horas Trabajadas">
+          </div>
+        </div>
+
+        <div class="col-sm-6 mb-3">
+          <div class="form-group">
+            <label class="required-field" for="Personas">Personas</label>
+            <input type="text" class="form-control" id="Personas" name="Personas" placeholder="Personas">
+          </div>
+        </div>
+
+        <div class="col-sm-6 mb-3">
+          <div class="form-group">
+            <label class="required-field" for="estado"> Estado </label>
+            <select id="estado" name="estado" class="form-control" [(ngModel)]="estado">
+              <option value="Pendiente">Pendiente</option>
+              <option value="activa">Activa</option>
+              <option value="en proceso">En proceso</option>
+              <option value="terminada">Terminada</option>
+            </select>
+          </div>
+        </div>
+
+
+        <div class="col-sm-6 mb-3">
+          <div class="form-group">
+            <label class="required-field" for="fechainicial">Fecha Inicio</label>
+            <input type="date" id="fechainicial" name="fechainicial" class="form-control" placeholder="Fecha Inicial"
+              [(ngModel)]="fechainicial" required>
+          </div>
+        </div>
+
+        <div class="col-sm-6 mb-3">
+          <div class="form-group">
+            <label class="required-field" for="fechafinal"> Fecha Final:</label>
+            <input type="date" id="fechafinal" name="fechafinal" class="form-control" [(ngModel)]="fechafinal" required>
+          </div>
+        </div>
+
+        <div class="col-sm-6 mb-3">
+          <div class="form-group">
+            <label class="required-field" for="Personas">Personas</label>
+            <input type="text" class="form-control" id="Personas" name="Personas" placeholder="Personas">
+          </div>
+        </div>
+
+        <div class="col-sm-12 mb-3">
+          <div class="form-group">
+            <label class="required-field" for="Descripcion">Descripcion Actividad</label>
+            <textarea class="form-control" id="Descripcion" name="Descripcion" rows="4"
+              placeholder="Descripcion Actividad"></textarea>
+          </div>
+        </div>
+
+        <div class="col-sm-12 mb-3">
+          <button type="submit" class="btn btn-primary">Registrar Actividad</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-sm-9 col-sm-offset-2 text">
+      <h3><strong>Actividades Registradas</strong></h3>
+    </div>
+  </div>
+
+  <table class="table table-bordered table-primary">
+    <thead>
+      <tr>
+        <th>Titulo</th>
+        <th>Horas</th>
+        <th>Descripcion</th>
+        <th>Personas</th>
+        <th>Estado</th>
+        <th>Fecha Inicial</th>
+        <th>Fecha Final</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let actividad of actividades; let i = index">
+        <td>{{ actividad.titulo }}</td>
+        <td>{{ actividad.horas }}</td>
+        <td>{{ actividad.descripcion }}</td>
+        <td><a href="#" (click)="verPersona(actividad.personas)">{{ actividad.personas }}</a></td>
+        <td>{{ actividad.estado }}</td>
+        <td>{{ actividad.fechainicial }}</td>
+        <td>{{ actividad.fechafinal }}</td>
+        <td>
+          <button class="btn btn-danger" (click)="eliminarActividad(i)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
