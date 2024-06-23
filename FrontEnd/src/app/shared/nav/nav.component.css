@@ -1,0 +1,30 @@
+nav{
+  text-align: center;
+}
+
+ul {
+  padding: 10px;
+  background-color: #0D6EFD;
+  list-style: none;
+  padding: 20px;
+  text-align: center;
+}
+
+li {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+ul li button{
+  background-color: #0D6EFD;
+  border: none;
+  color: white;
+  font-size: 15px;
+}
+
+ul li button:hover{
+  color: coral;
+  text-decoration: underline;
+  border-radius: 2em;
+}
+

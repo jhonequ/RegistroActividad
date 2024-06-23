@@ -1,6 +1,6 @@
-.main-content {
+/*.main-content {
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Allows body to expand and push footer down */
+  flex-grow: 1;  Allows body to expand and push footer down
 }
-
+*/

@@ -36,7 +36,7 @@ export class RegistroActividadComponent {
       fechainicial: this.fechainicial,
       fechafinal: this.fechafinal
     };
-
+    console.log(nuevaActividad);
     this.actividades.push(nuevaActividad);
 
     this.titulo = '';

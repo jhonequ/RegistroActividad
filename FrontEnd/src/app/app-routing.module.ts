@@ -7,7 +7,7 @@ import { ConsultaActividadComponent } from './pages/consulta-actividad/consulta-
 
 const routes: Routes = [
   {path:'',redirectTo:'/inicio',pathMatch:'full'},
-  {path:'Inicio',component:AppComponent},
+  {path:'Inicio',component:Headers},
   {path:'Login', component:LoginComponent},
   {path:'RegistroActividad', component:RegistroActividadComponent},
   {path:'ConsultaActividad', component:ConsultaActividadComponent}
