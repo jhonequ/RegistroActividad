@@ -15,6 +15,7 @@ interface Actividad {
   templateUrl: './registro-actividad.component.html',
   styleUrl: './registro-actividad.component.css'
 })
+
 export class RegistroActividadComponent {
   titulo: string;
   horas: number;
@@ -26,7 +27,7 @@ export class RegistroActividadComponent {
 
   actividades: Actividad[] = [];
 
-  submitForm(){
+  async submitForm(){
     const nuevaActividad: Actividad = {
       titulo: this.titulo,
       horas: this.horas,
@@ -36,8 +37,21 @@ export class RegistroActividadComponent {
       fechainicial: this.fechainicial,
       fechafinal: this.fechafinal
     };
+    
     console.log(nuevaActividad);
+    
     this.actividades.push(nuevaActividad);
+    
+    const respuestaRaw = await fetch("/registro_actividad", {
+    body: JSON.stringify(nuevaActividad), // <-- Aquí van los datos
+    headers: {
+      "Content-Type": "application/json", // <-- Importante el encabezado
+    },
+      method: "POST",
+    });
+    const jsonDecodificado =  await respuestaRaw.json();
+    console.log(jsonDecodificado);
+    
 
     this.titulo = '';
     this.horas = 0;

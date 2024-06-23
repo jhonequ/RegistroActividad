@@ -1,7 +1,7 @@
 <div class="contact__wrapper shadow-lg mt-n9">
 
   <div class="top-content">
-    <form id="contactus" (ngSubmit)="submitForm()">
+    <form id="contactus" (ngSubmit)="submitForm()" method="POST" action='/registro_actividad'>
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2 text">
           <h3><strong>Registro de Actividades</strong></h3>
@@ -12,14 +12,14 @@
         <div class="col-sm-6 mb-3">
           <div class="form-group">
             <label class="required-field" for="titulo">Titulo</label>
-            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo">
+            <input type="text" class="form-control" id="titulo"  [(ngModel)]="titulo" name="titulo" placeholder="Titulo">
           </div>
         </div>
 
         <div class="col-sm-6 mb-3">
           <div class="form-group">
             <label for="horas">Horas Trabajadas</label>
-            <input type="number" class="form-control" id="horas" name="horas"
+            <input type="number" class="form-control" id="horas" name="horas" [(ngModel)]="horas" 
               placeholder="Horas Trabajadas">
           </div>
         </div>
@@ -27,7 +27,7 @@
         <div class="col-sm-6 mb-3">
           <div class="form-group">
             <label class="required-field" for="personas">Personas</label>
-            <input type="text" class="form-control" id="personas" name="personas" placeholder="Personas">
+            <input type="text" class="form-control" id="personas" name="personas" placeholder="Personas" [(ngModel)]="personas" >
           </div>
         </div>
 
@@ -62,7 +62,7 @@
         <div class="col-sm-12 mb-3">
           <div class="form-group">
             <label class="required-field" for="descripcion">Descripcion Actividad</label>
-            <textarea class="form-control" id="descripcion" name="descripcion" rows="4"
+            <textarea class="form-control" id="descripcion" name="descripcion" rows="4" [(ngModel)]="descripcion" 
               placeholder="Descripcion Actividad"></textarea>
           </div>
         </div>
