@@ -1,7 +1,7 @@
 import Express from 'express'
 import Path from 'path'
 
-import {insert_RegistroActividad} from './dbs.js'
+import {insert_RegistroActividad,consult_Activities} from './dbs.js'
 
 const app = Express();
 const dir_root = Path.resolve();
@@ -27,10 +27,20 @@ app.get("/registro-actividad", (req,res)=>{
 })
 
 app.post("/registro_actividad", (req,res) =>{
-    //const titulo = req.body.titulo
     let {titulo,horas,descripcion,personas,estado,fechainicial,fechafinal} = req.body
-    console.log(titulo)
     insert_RegistroActividad(titulo,horas,descripcion,personas,estado,fechainicial,fechafinal)
     
     res.redirect("/")
 })
+
+app.get("/consulta_actividad",async function(req,res){
+    try {
+        const actividades = await consult_Activities();
+
+        res.status(200).json(actividades); // Enviar JSON directamente
+      } catch (error) {
+        console.error(error);
+        res.status(500).send("Error al consultar actividades"); // Manejar error
+      }
+    })
+
