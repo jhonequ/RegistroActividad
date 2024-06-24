@@ -1,7 +1,7 @@
 <div class="contact__wrapper shadow-lg mt-n9">
 
   <div class="top-content">
-    <form class="contactus">
+    <form id="contactus" (ngSubmit)="submitForm()" method="POST">
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2 text">
           <br>
@@ -10,22 +10,16 @@
       </div>
       <div class="row">
         <div class="col">
-          <input type="text" class="form-control" placeholder="Nombre de la tarea">
+          <input type="number" value="0" class="form-control" placeholder="Id de la tarea" [(ngModel)]="id">
         </div>
         <div class="col">
-          <input type="date" class="form-control" placeholder="Fecha">
-        </div>
-        <div class="col">
-          <select class="form-control" placeholder="Estado">
+          <select class="form-control" placeholder="Estado" [(ngModel)]="estado">
             <option selected>Estado</option>
             <option>Pendiente</option>
             <option>Proceso</option>
             <option>Cancelado</option>
             <option>Exitoso</option>
           </select>
-        </div>
-        <div class="col">
-          <input type="text" class="form-control" placeholder="Persona">
         </div>
         <div class="col">
           <button type="submit" class="btn btn-primary mb-2">Consultar</button>
@@ -35,32 +29,31 @@
           <table class="table table-bordered ">
             <thead class="table table-primary">
               <tr>
-                <th scope="col">Titulo</th>
-                <th scope="col">Horas Trabajadas</th>
-                <th scope="col">Descripcion</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Persona</th>
-                <th scope="col">Fecha Creacion</th>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Horas</th>
+                <th>Descripcion</th>
+                <th>Personas</th>
+                <th>Estado</th>
+                <th>Fecha Inicial</th>
+                <th>Fecha Final</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Tarea 1</td>
-                <td>4 H</td>
-                <td>Tarea 1</td>
-                <td>Pendiente</td>
-                <td>Persona 1</td>
-                <td>2024/05/20</td>
+              <tr *ngFor="let actividad of consulta | async; let i = index">
+                <td>{{ actividad.id_actividad }}</td>
+                <td>{{ actividad.titulo }}</td>
+                <td>{{ actividad.horas_trabajadas }}</td>
+                <td>{{ actividad.descripcion }}</td>
+                <td>{{ actividad.personas }}</td>
+                <td>{{ actividad.estado }}</td>
+                <td>{{ actividad.fecha_inicio }}</td>
+                <td>{{ actividad.fecha_fin }}</td>
               </tr>
             </tbody>
           </table>
         </div>
-
-
       </div>
     </form>
   </div>
-
-
-
 </div>

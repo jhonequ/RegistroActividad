@@ -12,14 +12,14 @@
         <div class="col-sm-6 mb-3">
           <div class="form-group">
             <label class="required-field" for="titulo">Titulo</label>
-            <input type="text" class="form-control" id="titulo"  [(ngModel)]="titulo" name="titulo" placeholder="Titulo">
+            <input type="text" class="form-control" id="titulo" [(ngModel)]="titulo" name="titulo" placeholder="Titulo">
           </div>
         </div>
 
         <div class="col-sm-6 mb-3">
           <div class="form-group">
             <label for="horas">Horas Trabajadas</label>
-            <input type="number" class="form-control" id="horas" name="horas" [(ngModel)]="horas" 
+            <input type="number" class="form-control" id="horas" name="horas" [(ngModel)]="horas"
               placeholder="Horas Trabajadas">
           </div>
         </div>
@@ -27,7 +27,8 @@
         <div class="col-sm-6 mb-3">
           <div class="form-group">
             <label class="required-field" for="personas">Personas</label>
-            <input type="text" class="form-control" id="personas" name="personas" placeholder="Personas" [(ngModel)]="personas" >
+            <input type="text" class="form-control" id="personas" name="personas" placeholder="Personas"
+              [(ngModel)]="personas">
           </div>
         </div>
 
@@ -35,7 +36,7 @@
           <div class="form-group">
             <label class="required-field" for="estado"> Estado </label>
             <select id="estado" name="estado" class="form-control" [(ngModel)]="estado">
-              <option value="Pendiente">Pendiente</option>
+              <option value="Pendiente" selected>Pendiente</option>
               <option value="activa">Activa</option>
               <option value="en proceso">En proceso</option>
               <option value="terminada">Terminada</option>
@@ -43,26 +44,25 @@
           </div>
         </div>
 
-
         <div class="col-sm-6 mb-3">
           <div class="form-group">
             <label class="required-field" for="fechainicial">Fecha Inicio</label>
             <input type="date" id="fechainicial" name="fechainicial" class="form-control" placeholder="Fecha Inicial"
-              [(ngModel)]="fechainicial" required>
+              [(ngModel)]="fechainicial">
           </div>
         </div>
 
         <div class="col-sm-6 mb-3">
           <div class="form-group">
             <label class="required-field" for="fechafinal"> Fecha Final:</label>
-            <input type="date" id="fechafinal" name="fechafinal" class="form-control" [(ngModel)]="fechafinal" required>
+            <input type="date" id="fechafinal" name="fechafinal" class="form-control" [(ngModel)]="fechafinal">
           </div>
         </div>
 
         <div class="col-sm-12 mb-3">
           <div class="form-group">
             <label class="required-field" for="descripcion">Descripcion Actividad</label>
-            <textarea class="form-control" id="descripcion" name="descripcion" rows="4" [(ngModel)]="descripcion" 
+            <textarea class="form-control" id="descripcion" name="descripcion" rows="4" [(ngModel)]="descripcion"
               placeholder="Descripcion Actividad"></textarea>
           </div>
         </div>
@@ -75,41 +75,43 @@
     </form>
 
     <br>
-  <br>
-  <div class="row">
-    <div class="col-sm-9 col-sm-offset-2 text">
-      <h3><strong>Actividades Registradas</strong></h3>
+    <br>
+    <div class="row">
+      <div class="col-sm-9 col-sm-offset-2 text">
+        <h3><strong>Actividades Registradas</strong></h3>
+      </div>
     </div>
-  </div>
 
-  <table class="table table-bordered table-primary">
-    <thead>
-      <tr>
-        <th>Titulo</th>
-        <th>Horas</th>
-        <th>Descripcion</th>
-        <th>Personas</th>
-        <th>Estado</th>
-        <th>Fecha Inicial</th>
-        <th>Fecha Final</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let actividad of actividades; let i = index">
-        <td>{{ actividad.titulo }}</td>
-        <td>{{ actividad.horas }}</td>
-        <td>{{ actividad.descripcion }}</td>
-        <td><a href="#" (click)="verPersona(actividad.personas)">{{ actividad.personas }}</a></td>
-        <td>{{ actividad.estado }}</td>
-        <td>{{ actividad.fechainicial }}</td>
-        <td>{{ actividad.fechafinal }}</td>
-        <td>
-          <button class="btn btn-danger" (click)="eliminarActividad(i)">Eliminar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <table class="table table-bordered btn-primary">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Titulo</th>
+          <th>Horas</th>
+          <th>Descripcion</th>
+          <th>Personas</th>
+          <th>Estado</th>
+          <th>Fecha Inicial</th>
+          <th>Fecha Final</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let actividad of consulta | async; let i = index">
+          <td>{{ actividad.id_actividad }}</td>
+          <td>{{ actividad.titulo }}</td>
+          <td>{{ actividad.horas_trabajadas }}</td>
+          <td>{{ actividad.descripcion }}</td>
+          <td>{{ actividad.personas }}</td>
+          <td>{{ actividad.estado }}</td>
+          <td>{{ actividad.fecha_inicio }}</td>
+          <td>{{ actividad.fecha_fin }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="eliminarActividad(i)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
 </div>
